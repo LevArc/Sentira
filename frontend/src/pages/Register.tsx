@@ -19,16 +19,19 @@ const Register: React.FC = () => {
         if (password !== confirmPassword) {
             return setError("Passwords do not match.");
         }
-
+        
+        if (password.length < 8) {
+            return setError("Password must be at least 8 characters long.");
+        }
         setIsLoading(true);
 
         try {
-            await api.post('/auth/register/', { username, password });
-            
+            const result = await api.post('/auth/register/', { username, password });
+            console.log(result);
             navigate('/login');
             
         } catch (err: any) {
-             setError(err.response?.data?.username?.[0] || 'Registration failed. Username may be taken.');
+             setError(err.response?.data?.username?.[0] || 'Registration failed');
         } finally {
             setIsLoading(false);
         }
