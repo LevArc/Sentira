@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:5173",
+    "https://sentira-rho.vercel.app",
 ]
 
 SIMPLE_JWT = {
@@ -69,6 +70,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://sentira-rho.vercel.app",
 ]
 
 ROOT_URLCONF = 'sentira_backend.urls'
